@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace OpenAIRealtime.Events
 {
-    public class TextEvent : MonoBehaviour
+    public class TextInput : MonoBehaviour
     {
         [Range(0, 1f)]
         [SerializeField] private float temperature = .8f;
@@ -16,24 +16,6 @@ namespace OpenAIRealtime.Events
         
         public void SendText(string text)
         {
-            /*
-             previous_item_id = conversationHistory.Count > 0 ? conversationHistory[conversationHistory.Count - 1].item.id : null,
-            item = new Item
-            {
-                id = "msg_" + conversationHistory.Count,
-                objectType = "realtime.item",
-                type = "message",
-                status = "completed",
-                role = "user",
-                content = new List<Content>
-                {
-                    new Content
-                    {
-                        type = "input_text",
-                        text = userText
-                    }
-                }
-            }*/
             var id = "msg_" + messageId++;
             var textEvent = new ConversationItemCreateEvent
             {
@@ -67,14 +49,14 @@ namespace OpenAIRealtime.Events
     }
     
     #if UNITY_EDITOR
-    [CustomEditor(typeof(TextEvent))]
+    [CustomEditor(typeof(TextInput))]
     public class TextEventEditor : Editor
     {
         private string textToSend = "Hello, how are you?";
         public override void OnInspectorGUI()
         {
             DrawDefaultInspector();
-            var textEvent = (TextEvent) target;
+            var textEvent = (TextInput) target;
             textToSend = EditorGUILayout.TextField("Text to send", textToSend);
             if (GUILayout.Button("Send"))
             {

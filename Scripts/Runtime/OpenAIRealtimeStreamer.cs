@@ -84,7 +84,6 @@ namespace OpenAIRealtime
             if (ws != null && ws.State == WebSocketState.Open)
             {
                 var jsonEvent = JsonConvert.SerializeObject(ev);
-                Debug.Log("Sending event: " + jsonEvent);
                 ws.SendText(jsonEvent);
             }
         }
