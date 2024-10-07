@@ -2,7 +2,7 @@
 
 namespace OpenAIRealtime.Data
 {
-    [CreateAssetMenu(fileName = "OpenAIConfig", menuName = "DoubTech/AI/Third Party/OpenAIConfig")]
+    [CreateAssetMenu(fileName = "OpenAIConfig", menuName = "AI/Open AI Config")]
     public class OpenAIConfig : ScriptableObject
     {
         [SerializeField] public string apiUrl = "wss://api.openai.com/v1/realtime";
