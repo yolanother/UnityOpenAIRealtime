@@ -1,6 +1,6 @@
 {
-    "name": "",
-    "rootNamespace": "",
+    "name": "Doubtech.ThirdParty.OpenAI.Realtime.Editor",
+    "rootNamespace": "DoubTech.ThirdParty.OpenAI.Realtime",
     "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": false,
