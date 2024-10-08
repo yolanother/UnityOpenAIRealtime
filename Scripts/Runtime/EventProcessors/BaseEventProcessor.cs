@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using OpenAIRealtime.Data;
 using OpenAIRealtime.Data.ServerEvents;
+using UnityEngine;
 
 namespace OpenAIRealtime.EventProcessors
 {

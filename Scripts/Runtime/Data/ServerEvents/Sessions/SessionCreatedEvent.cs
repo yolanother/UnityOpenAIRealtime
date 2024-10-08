@@ -1,7 +1,9 @@
-﻿using Newtonsoft.Json;
-using System;
+﻿using System;
+using DoubTech.ThirdParty.OpenAI.Realtime.Data.Common;
+using Newtonsoft.Json;
+using OpenAIRealtime.Data;
 
-namespace OpenAIRealtime.Data.ServerEvents.Sessions
+namespace DoubTech.ThirdParty.OpenAI.Realtime.Data.ServerEvents.Sessions
 {
     /// <summary>
     /// Represents the session.created event structure.

@@ -16,9 +16,6 @@ namespace OpenAIRealtime
         private WebSocket ws;
         private StringBuilder responseText = new StringBuilder();
 
-        // UnityEvents to handle AI responses
-        public UnityEvent<string> onTextResponse;
-
         // List of registered event processors
         private List<IEventProcessor> eventProcessors = new List<IEventProcessor>();
 
@@ -54,13 +51,7 @@ namespace OpenAIRealtime
                         if (processor.CanProcess(responseEvent))
                         {
                             processor.Process(responseEvent.Type, message);
-                            processed = true;
                         }
-                    }
-                    
-                    if (!processed)
-                    {
-                        Debug.LogWarning($"No processor found for event type: {responseEvent.Type}\n{message}");
                     }
                 }
             };

@@ -11,7 +11,7 @@ namespace OpenAIRealtime.EventProcessors
     {
         public class ProcessedType
         {
-            public BaseEvent instance;
+            public BaseEvent eventInstance;
             public Action<BaseEvent> onEventProcessed;
         }
         
@@ -33,9 +33,9 @@ namespace OpenAIRealtime.EventProcessors
             if (EventTypes.TryGetValue(type, out var eventType))
             {
                 // Update it with the json content of the response
-                JsonConvert.PopulateObject(response, eventType.instance);
-                eventType.onEventProcessed(eventType.instance);
-                return eventType.instance;
+                JsonConvert.PopulateObject(response, eventType.eventInstance);
+                eventType.onEventProcessed(eventType.eventInstance);
+                return eventType.eventInstance;
             }
             
             throw new Exception($"Event type {type} not found in EventTypes dictionary.");
@@ -47,7 +47,7 @@ namespace OpenAIRealtime.EventProcessors
             var type = Activator.CreateInstance<T>();
             var processedType = new ProcessedType
             {
-                instance = type,
+                eventInstance = type,
                 onEventProcessed = (e) => onEventProcessed(e as T)
             };
             EventTypes.Add(type.Type, processedType);

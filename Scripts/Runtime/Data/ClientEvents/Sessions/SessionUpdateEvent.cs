@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using DoubTech.ThirdParty.OpenAI.Realtime.Data.Common;
 using Newtonsoft.Json;
+using OpenAIRealtime.Data;
 
-namespace OpenAIRealtime.Data.ClientEvents.Sessions
+namespace DoubTech.ThirdParty.OpenAI.Realtime.Data.ClientEvents.Sessions
 {
     /// <summary>
     /// Represents the session.update event structure.
@@ -77,86 +79,6 @@ namespace OpenAIRealtime.Data.ClientEvents.Sessions
         /// </summary>
         [JsonProperty("session")]
         public Session Session { get; set; }
-    }
-
-    /// <summary>
-    /// Represents session details.
-    /// </summary>
-    [Serializable]
-    public class Session
-    {
-        /// <summary>
-        /// Gets or sets the modalities of the session.
-        /// Example: ["text", "audio"]
-        /// </summary>
-        [JsonProperty("modalities")]
-        public List<string> Modalities { get; set; }
-
-        /// <summary>
-        /// Gets or sets the session instructions.
-        /// Example: "Your knowledge cutoff is 2023-10. You are a helpful assistant."
-        /// </summary>
-        [JsonProperty("instructions")]
-        public string Instructions { get; set; }
-
-        /// <summary>
-        /// Gets or sets the voice type.
-        /// Example: "alloy"
-        /// </summary>
-        [JsonProperty("voice")]
-        public string Voice { get; set; }
-
-        /// <summary>
-        /// Gets or sets the input audio format.
-        /// Example: "pcm16"
-        /// </summary>
-        [JsonProperty("input_audio_format")]
-        public string InputAudioFormat { get; set; }
-
-        /// <summary>
-        /// Gets or sets the output audio format.
-        /// Example: "pcm16"
-        /// </summary>
-        [JsonProperty("output_audio_format")]
-        public string OutputAudioFormat { get; set; }
-
-        /// <summary>
-        /// Gets or sets the input audio transcription details.
-        /// </summary>
-        [JsonProperty("input_audio_transcription")]
-        public InputAudioTranscription InputAudioTranscription { get; set; }
-
-        /// <summary>
-        /// Gets or sets the turn detection details.
-        /// </summary>
-        [JsonProperty("turn_detection")]
-        public TurnDetection TurnDetection { get; set; }
-
-        /// <summary>
-        /// Gets or sets the list of tools available in the session.
-        /// </summary>
-        [JsonProperty("tools")]
-        public List<Tool> Tools { get; set; }
-
-        /// <summary>
-        /// Gets or sets the tool choice type.
-        /// Example: "auto"
-        /// </summary>
-        [JsonProperty("tool_choice")]
-        public string ToolChoice { get; set; }
-
-        /// <summary>
-        /// Gets or sets the temperature value for the session.
-        /// Example: 0.8
-        /// </summary>
-        [JsonProperty("temperature")]
-        public float Temperature { get; set; }
-
-        /// <summary>
-        /// Gets or sets the max output tokens, which can be null.
-        /// </summary>
-        [JsonProperty("max_output_tokens")]
-        public object MaxOutputTokens { get; set; }
     }
 
     /// <summary>

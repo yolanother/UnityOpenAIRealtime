@@ -1,10 +1,10 @@
-﻿using OpenAIRealtime.Data;
+﻿using DoubTech.ThirdParty.OpenAI.Realtime.Utilities;
+using OpenAIRealtime.Data;
 using OpenAIRealtime.Data.ServerEvents;
-using UnityEngine;
 
 namespace OpenAIRealtime.EventProcessors
 {
-    public abstract class MultiEventProcessorMonoBehaviour : MonoBehaviour, IEventProcessor
+    public abstract class MultiEventProcessorMonoBehaviour : BaseStreamerClientMonoBehaviour, IEventProcessor
     {
         private MultiEventProcessor _multiEventProcessor = new MultiEventProcessor();
         protected virtual void Awake()

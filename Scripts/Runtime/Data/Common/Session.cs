@@ -1,8 +1,9 @@
-﻿using Newtonsoft.Json;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using Newtonsoft.Json;
+using OpenAIRealtime.Data.ServerEvents;
 
-namespace OpenAIRealtime.Data.ServerEvents.Sessions
+namespace DoubTech.ThirdParty.OpenAI.Realtime.Data.Common
 {
     /// <summary>
     /// Represents the session object used in various session-related events.
@@ -36,68 +37,53 @@ namespace OpenAIRealtime.Data.ServerEvents.Sessions
     public class Session
     {
         /// <summary>
-        /// Gets or sets the unique ID of the session.
-        /// Example: "sess_001"
-        /// </summary>
-        [JsonProperty("id")]
-        public string Id { get; set; }
-
-        /// <summary>
-        /// Gets or sets the object type of the session.
-        /// Must be "realtime.session".
-        /// Example: "realtime.session"
-        /// </summary>
-        [JsonProperty("object")]
-        public string ObjectType { get; set; }
-
-        /// <summary>
         /// Gets or sets the default model used for this session.
         /// Example: "gpt-4o-realtime-preview-2024-10-01"
         /// </summary>
         [JsonProperty("model")]
-        public string Model { get; set; }
+        public string Model { get; set; } = "gpt-4o-realtime-preview-2024-10-01";
 
         /// <summary>
         /// Gets or sets the set of modalities the model can respond with.
         /// Example: ["text", "audio"]
         /// </summary>
         [JsonProperty("modalities")]
-        public List<string> Modalities { get; set; }
+        public List<string> Modalities { get; set; } = new List<string> { "text", "audio" };
 
         /// <summary>
         /// Gets or sets the default system instructions for this session.
         /// Example: ""
         /// </summary>
         [JsonProperty("instructions")]
-        public string Instructions { get; set; }
+        public string Instructions { get; set; } = "Please assist the user.";
 
         /// <summary>
         /// Gets or sets the voice the model uses to respond.
         /// Example: "alloy"
         /// </summary>
         [JsonProperty("voice")]
-        public string Voice { get; set; }
+        public string Voice { get; set; } = "alloy";
 
         /// <summary>
         /// Gets or sets the format of input audio.
         /// Example: "pcm16"
         /// </summary>
         [JsonProperty("input_audio_format")]
-        public string InputAudioFormat { get; set; }
+        public string InputAudioFormat { get; set; } = "pcm16";
 
         /// <summary>
         /// Gets or sets the format of output audio.
         /// Example: "pcm16"
         /// </summary>
         [JsonProperty("output_audio_format")]
-        public string OutputAudioFormat { get; set; }
+        public string OutputAudioFormat { get; set; } = "pcm16";
 
         /// <summary>
         /// Gets or sets the input audio transcription configuration.
         /// Can be null.
         /// </summary>
         [JsonProperty("input_audio_transcription")]
-        public object InputAudioTranscription { get; set; }
+        public InputAudioTranscription InputAudioTranscription { get; set; } = new InputAudioTranscription();
 
         /// <summary>
         /// Gets or sets the turn detection configuration.
@@ -116,21 +102,14 @@ namespace OpenAIRealtime.Data.ServerEvents.Sessions
         /// Example: "auto"
         /// </summary>
         [JsonProperty("tool_choice")]
-        public string ToolChoice { get; set; }
+        public string ToolChoice { get; set; } = "auto";
 
         /// <summary>
         /// Gets or sets the sampling temperature.
         /// Example: 0.8
         /// </summary>
         [JsonProperty("temperature")]
-        public float Temperature { get; set; }
-
-        /// <summary>
-        /// Gets or sets the maximum number of output tokens.
-        /// Can be an integer or "inf".
-        /// </summary>
-        [JsonProperty("max_output_tokens")]
-        public object MaxOutputTokens { get; set; }
+        public float Temperature { get; set; } = 0.8f;
     }
 
     /// <summary>

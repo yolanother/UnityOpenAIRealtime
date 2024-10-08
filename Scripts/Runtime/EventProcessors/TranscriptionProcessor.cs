@@ -1,10 +1,4 @@
-﻿using System;
-using System.Text;
-using OpenAIRealtime.Data;
-using OpenAIRealtime.Data.ClientEvents.Sessions;
-using OpenAIRealtime.Data.ServerEvents;
-using OpenAIRealtime.Data.ServerEvents.Responses;
-using OpenAIRealtime.Data.ServerEvents.Responses.Text;
+﻿using OpenAIRealtime.Data.ServerEvents.Conversations.Items;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -12,22 +6,16 @@ namespace OpenAIRealtime.EventProcessors
 {
     public class TranscriptionProcessor : MultiEventProcessorMonoBehaviour
     {
-        [SerializeField] private UnityEvent<string> onPartialTextResponse = new UnityEvent<string>();
-        [SerializeField] private UnityEvent<string> onFullTextResponse = new UnityEvent<string>();
-
-        private StringBuilder _currentText = new StringBuilder();
-
+        [SerializeField] private UnityEvent<string> onPartialTranscription = new UnityEvent<string>();
+        [SerializeField] private UnityEvent<string> onFullTranscription = new UnityEvent<string>();
+        
         protected override void OnRegisterEventProcessors(MultiEventProcessor multiEventProcessor)
         {
-            multiEventProcessor.Add<ResponseCreatedEvent>(e => _currentText.Clear());
-            multiEventProcessor.Add<ResponseTextDeltaEvent>(e => ProcessPartial(e.Delta));
-            multiEventProcessor.Add<ResponseTextDoneEvent>(e => onFullTextResponse.Invoke(e.Text));
-        }
-
-        private void ProcessPartial(string delta)
-        {
-            _currentText.Append(delta);
-            onPartialTextResponse.Invoke(_currentText.ToString());
+            multiEventProcessor.Add<ConversationItemInputAudioTranscriptionCompletedEvent>(e =>
+            {
+                onPartialTranscription?.Invoke(e.Transcript);
+                onFullTranscription?.Invoke(e.Transcript);
+            });
         }
     }
 }

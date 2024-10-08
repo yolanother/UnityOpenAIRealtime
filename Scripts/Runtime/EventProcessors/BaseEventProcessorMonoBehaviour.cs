@@ -1,16 +1,16 @@
-﻿using Newtonsoft.Json;
+﻿using DoubTech.ThirdParty.OpenAI.Realtime.Utilities;
+using Newtonsoft.Json;
 using OpenAIRealtime.Data;
 using OpenAIRealtime.Data.ServerEvents;
-using UnityEngine;
 
 namespace OpenAIRealtime.EventProcessors
 {
-    public abstract class BaseEventProcessorMonoBehaviour<T> : MonoBehaviour, IEventProcessor where T : BaseEvent, new()
+    public abstract class BaseEventProcessorMonoBehaviour<T> : BaseStreamerClientMonoBehaviour, IEventProcessor where T : BaseEvent, new()
     {
-        public string Type => _instance.Type;
+        public string Type => _eventInstance.Type;
         
         // Reference instance
-        private T _instance = new T();
+        private T _eventInstance = new T();
         
         public bool CanProcess(ServerEvent serverEvent)
         {
@@ -20,9 +20,9 @@ namespace OpenAIRealtime.EventProcessors
 
         public BaseEvent Process(string type, string responseEvent)
         {
-            JsonConvert.PopulateObject(responseEvent, _instance);
-            OnEventProcessed(_instance);
-            return _instance;
+            JsonConvert.PopulateObject(responseEvent, _eventInstance);
+            OnEventProcessed(_eventInstance);
+            return _eventInstance;
         }
 
         protected abstract void OnEventProcessed(T data);
