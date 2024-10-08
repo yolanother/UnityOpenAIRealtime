@@ -13,6 +13,8 @@ Welcome to the **Unity OpenAI Realtime API** package! This library integrates Op
 - **Easy-to-use microphone and text input handling**: Capture audio or send text messages via simple components like `StreamingMicInput` and `TextInput`.
 - **XR SDK Voice Integration**: Includes `com.meta.xr.sdk.voice` dependency to handle voice input in XR environments.
 
+![image](https://github.com/user-attachments/assets/e51732ea-17a4-4f67-8415-f524397583b1)
+
 ## Installation
 
 ### Method 1: Install via Unity Package Manager (Git URL)
