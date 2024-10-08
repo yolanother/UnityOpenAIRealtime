@@ -144,6 +144,7 @@ You can find example scenes under the `Examples/` directory that showcase how to
 - **Unity Version**: 2021.3 or higher
 - **OpenAI API Key**: Sign up for access to the OpenAI Realtime API [here](https://openai.com/index/introducing-the-realtime-api/).
 - **Meta XR SDK Voice**: Ensure you have the `com.meta.xr.sdk.voice` dependency installed.
+- **Newtonsoft Json**: Ensure you have the `com.unity.nuget.newtonsoft-json` dependency installed.
 
 ## Contribution
 
