@@ -3,7 +3,9 @@
     "rootNamespace": "DoubTech.ThirdParty.OpenAI.Realtime",
     "references": [
         "GUID:04376767bc1f3b428aefa3d20743e819",
-        "GUID:4504b1a6e0fdcc3498c30b266e4a63bf"
+        "GUID:4504b1a6e0fdcc3498c30b266e4a63bf",
+        "GUID:7fc7076089fdfbc4399cba40cc3b0dd6",
+        "GUID:910a956078d2ff4429c717211dcfaecb"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
